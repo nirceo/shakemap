@@ -99,6 +99,9 @@ MMI_LABELS = {
 IMT_RANGES = {
     'PGV': (1e-2, 500),
     'PGA': (1e-4, 500),
+    'PGD': (1e-2, 500),
+    'IA': (1e-2, 500),
+    'IH': (1e-4, 500),
     'SA(0.3)': (1e-4, 500),
     'SA(1.0)': (1e-4, 500),
     'SA(3.0)': (1e-4, 400)
@@ -108,6 +111,9 @@ IMTYPES = {
     'MMI': 'Macroseismic Intensity Map',
     'PGV': 'Peak Ground Velocity Map',
     'PGA': 'Peak Ground Acceleration Map',
+    'PGD': 'Peak Ground Displacement Map',
+    'IA' : 'Arias Intensity Map',
+    'IH' : 'Housner Intensity Map',
     'SA(0.3)': '0.3 Second Peak Spectral Acceleration Map',
     'SA(1.0)': '1.0 Second Peak Spectral Acceleration Map',
     'SA(3.0)': '3.0 Second Peak Spectral Acceleration Map'
@@ -290,6 +296,9 @@ def _draw_imt_legend(fig, palette, imtype, gmice):
     units = {
         'PGV': '(cm/s)',
         'PGA': '(%g)',
+        'PGD': '(cm)',
+        'IA': '(cm/s)',
+        'IH': '(cm)',
         'SA(0.3)': '(%g)',
         'SA(1.0)': '(%g)',
         'SA(3.0)': '(%g)'
@@ -430,12 +439,10 @@ def _draw_mmi_legend(fig, palette, gmice, process_time, map_version, point_sourc
         pga, 3, mode='float')) for pga in pga_values]
     pgv_labels = ["{0:.3g}".format(set_num_precision(
         pgv, 3, mode='float')) for pgv in pgv_values]
-
     pga_labels[0] = '<'+pga_labels[0]
     pga_labels[-1] = '>'+pga_labels[-1]
     pgv_labels[0] = '<'+pgv_labels[0]
     pgv_labels[-1] = '>'+pgv_labels[-1]
-
     acceleration += pga_labels
     velocity += pgv_labels
 
@@ -1261,7 +1268,7 @@ def draw_contour(container, imtype, topobase, oceanfile, outpath,
     pimtdata = pimtgrid.getData()
     if imtype == 'MMI':
         pass
-    elif imtype == 'PGV':
+    elif imtype == 'PGV' or imtype == 'PGD' or imtype == 'IA' or imtype == 'IH':
         pimtdata = np.exp(pimtdata)
     else:
         pimtdata = np.exp(pimtdata) * 100

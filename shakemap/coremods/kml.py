@@ -48,6 +48,9 @@ CIRCLE = 'circle.png'
 
 IMT_UNITS = {'pga': '%g',
              'pgv': 'cm/sec',
+             'ia': 'cm/sec',
+             'pgd': 'cm',
+             'ih': 'cm',
              'sa(0.3)': '%g',
              'sa(1.0)': '%g',
              'sa(3.0)': '%g'}
@@ -768,7 +771,10 @@ def get_description_table(station):
 
 def imt_to_string(imt):
     non_spectrals = {'pga': 'PGA',
-                     'pgv': 'PGV'}
+                     'pgv': 'PGV',
+                     'ia' : 'IA',
+                     'pgd': 'PGD',
+                     'ih' : 'IH'}
     if imt in non_spectrals:
         return non_spectrals[imt]
     period = re.search("\d+\.\d+", imt).group()  # noqa
@@ -851,6 +857,21 @@ def get_description(station):
     pgv_dt.text = 'PGV:'
     pgv_dd = etree.SubElement(dl, 'dd')
     pgv_dd.text = get_imt_text(station, 'pgv')
+
+    ia_dt = etree.SubElement(dl, 'dt')
+    ia_dt.text = 'IA:'
+    ia_dd = etree.SubElement(dl, 'dd')
+    ia_dd.text = get_imt_text(station, 'ia')
+
+    pgd_dt = etree.SubElement(dl, 'dt')
+    pgd_dt.text = 'PGD:'
+    pgd_dd = etree.SubElement(dl, 'dd')
+    pgd_dd.text = get_imt_text(station, 'pgd')
+
+    ih_dt = etree.SubElement(dl, 'dt')
+    ih_dt.text = 'IH:'
+    ih_dd = etree.SubElement(dl, 'dd')
+    ih_dd.text = get_imt_text(station, 'ih')
 
     psa03_dt = etree.SubElement(dl, 'dt')
     psa03_dt.text = 'PSA 0.3 sec:'

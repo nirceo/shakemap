@@ -31,6 +31,9 @@ class PlotRegr(CoreModule):
     contents = OrderedDict.fromkeys(['miRegr',
                                      'pgaRegr',
                                      'pgvRegr',
+                                     'iaRegr',
+                                     'pgdRegr',
+                                     'ihRegr',
                                      'psa[PERIOD]Regr'])
     contents['miRegr'] = {
         'title': 'Intensity Regression',
@@ -55,6 +58,33 @@ class PlotRegr(CoreModule):
         'page': regr_page,
         'formats': [{'filename': 'pgv_regr.png',
                      'type': 'image/png'}]
+    }
+    contents['iaRegr'] = {
+	'title': 'IA Regression',
+        'caption': 'Regression plot of [COMPONENT] Arias Intensity '\
+                   '(cm/s).',
+        'page': regr_page,
+        'formats': [{'filename':'IA_regr.png',
+                     'type':'image/png'}
+        ]
+    }
+    contents['pgdRegr'] = {
+	'title': 'PGD Regression',
+        'caption': 'Regression plot of [COMPONENT] peak ground '\
+                   'displacement (cm).',
+        'page': regr_page,
+        'formats': [{'filename':'PGD_regr.png',
+                     'type':'image/png'}
+        ]
+    }
+    contents['ihRegr'] = {
+	'title': 'IH Regression',
+        'caption': 'Regression plot of [COMPONENT] Housner '\
+                   'intensity (cm).',
+        'page': regr_page,
+        'formats': [{'filename':'IH_regr.png',
+                     'type':'image/png'}
+        ]
     }
     psacap = 'Regression plot of [COMPONENT] [FPERIOD] sec 5% damped ' \
              'pseudo-spectral acceleration(%g).'
@@ -156,7 +186,7 @@ class PlotRegr(CoreModule):
                                     thisamp = amp['value']
                                 if thisamp <= 0:
                                     break
-                                if myimt == 'PGV':
+                                if myimt == 'PGV'or myimt == 'IA' or myimt == 'PGD' or myimt == 'IH':
                                     tmpval = np.log(thisamp)
                                 else:
                                     tmpval = np.log(thisamp / 100.)
@@ -185,7 +215,7 @@ class PlotRegr(CoreModule):
                                 continue
                             amp = thing['value']
                             if amp is not None and amp != 'null' and amp != 0:
-                                if myimt == 'PGV':
+                                if myimt == 'PGV'or myimt == 'IA' or myimt == 'PGD' or myimt == 'IH':
                                     amp = np.log(amp)
                                 else:
                                     amp = np.log(amp / 100.)
@@ -199,6 +229,12 @@ class PlotRegr(CoreModule):
                 plt.ylabel('MMI')
             elif myimt == 'PGV':
                 plt.ylabel('PGV ln(cm/s)')
+            elif myimt == 'IA':
+                plt.ylabel('IA ln(cm/s)')
+            elif myimt == 'PGD':
+                plt.ylabel('PGD ln(cm)')
+            elif myimt == 'IH':
+                plt.ylabel('IH ln(cm)')
             else:
                 plt.ylabel(myimt + ' ln(g)')
             plt.legend()

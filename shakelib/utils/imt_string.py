@@ -20,7 +20,7 @@ def oq_to_file(oqimt):
         ValueError: when there is no corresponding filename-friendly
             IMT representation.
     """
-    if oqimt in ['PGA', 'PGV', 'MMI']:
+    if oqimt in ['PGA', 'PGV', 'MMI','IA','PGD','IH']:
         return oqimt.lower()
     float_pattern = r"[-+]?\d*\.\d+|\d+"
     periods = re.findall(float_pattern, oqimt)
@@ -52,7 +52,7 @@ def file_to_oq(fileimt):
     Returns:
         str: Openquake IMT nomenclature string.
     """
-    if fileimt in ['pga', 'pgv', 'mmi']:
+    if fileimt in ['pga', 'pgv', 'mmi', 'ia','pgd','ih']:
         return fileimt.upper()
     if 'p' not in fileimt:
         fmt = '%s is not a valid filename-friendly IMT string.'

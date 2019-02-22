@@ -136,6 +136,21 @@ class TransferBaseModule(CoreModule):
             product_properties['maxpga'] = pga_info['max']
             product_properties['maxpga-grid'] = pga_info['max_grid']
 
+        if 'PGD' in info['output']['ground_motions']:
+            pgd_info = info['output']['ground_motions']['PGD']
+            product_properties['maxpgd'] = pgd_info['max']
+            product_properties['maxpgd-grid'] = pgd_info['max_grid']
+
+        if 'IA' in info['output']['ground_motions']:
+            ia_info = info['output']['ground_motions']['IA']
+            product_properties['maxia'] = ia_info['max']
+            product_properties['maxia-grid'] = ia_info['max_grid']
+
+        if 'IH' in info['output']['ground_motions']:
+            ih_info = info['output']['ground_motions']['IH']
+            product_properties['maxih'] = ih_info['max']
+            product_properties['maxih-grid'] = ih_info['max_grid']
+
         if 'SA(0.3)' in info['output']['ground_motions']:
             psa03_info = info['output']['ground_motions']['SA(0.3)']
             product_properties['maxpsa03'] = psa03_info['max']

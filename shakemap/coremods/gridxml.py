@@ -48,7 +48,7 @@ def _oq_to_gridxml(oqimt):
         ValueError: when there is no corresponding filename-friendly
             IMT representation, or when frequency exceeds 9.9.
     """
-    if oqimt in ['PGA', 'PGV', 'MMI']:
+    if oqimt in ['PGA', 'PGV', 'MMI','IA','PGD','IH']:
         return oqimt
     float_pattern = r"[-+]?\d*\.\d+|\d+"
     periods = re.findall(float_pattern, oqimt)

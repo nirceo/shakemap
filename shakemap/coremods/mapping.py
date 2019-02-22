@@ -36,6 +36,9 @@ class MappingModule(CoreModule):
         r'products/mmi_legend\.pdf',
         r'products/pga\.jpg', r'products/pga\.pdf',
         r'products/pgv\.jpg', r'products/pgv\.pdf',
+        r'products/pgd\.jpg', r'products/pgd\.pdf',
+        r'products/ia\.jpg', r'products/ia\.pdf',
+        r'products/ih\.jpg', r'products/ih\.pdf',
         r'products/psa.*p.*\.jpg', r'products/psa.*p.*\.pdf']
     dependencies = [('products/shake_result.hdf', True)]
     configs = ['products.conf']
@@ -51,6 +54,9 @@ class MappingModule(CoreModule):
          'intensityThumbnail',
          'pgaMap',
          'pgvMap',
+         'pgdMap',
+         'iaMap',
+         'ihMap',
          'psa[PERIOD]Map'])
     contents['intensityMap'] = {
         'title': 'Intensity Map',
@@ -97,6 +103,42 @@ class MappingModule(CoreModule):
             'type': 'image/jpeg'
         }, {
             'filename': 'pgv.pdf',
+            'type': 'application/pdf'
+        }]
+    }
+    contents['pgdMap'] = {
+        'title': 'PGD Map',
+        'caption': 'Map of peak ground displacement (cm).',
+        'page': mapping_page,
+        'formats': [{
+            'filename': 'pgd.jpg',
+            'type': 'image/jpeg'
+        }, {
+            'filename': 'pgd.pdf',
+            'type': 'application/pdf'
+        }]
+    }
+    contents['iaMap'] = {
+        'title': 'IA Map',
+        'caption': 'Map of Arias intensity (cm/s).',
+        'page': mapping_page,
+        'formats': [{
+            'filename': 'ia.jpg',
+            'type': 'image/jpeg'
+        }, {
+            'filename': 'ia.pdf',
+            'type': 'application/pdf'
+        }]
+    }
+    contents['ihMap'] = {
+        'title': 'IH Map',
+        'caption': 'Map of Housner intensity (cm).',
+        'page': mapping_page,
+        'formats': [{
+            'filename': 'ih.jpg',
+            'type': 'image/jpeg'
+        }, {
+            'filename': 'ih.pdf',
             'type': 'application/pdf'
         }]
     }

@@ -2,11 +2,11 @@
 from abc import ABC, abstractmethod
 
 # third party imports
-from openquake.hazardlib.imt import PGA, PGV, SA, from_string
+from openquake.hazardlib.imt import PGA, PGV, SA, IA,PGD,IH,from_string
 
 # local imports
 from openquake.hazardlib import imt
-from openquake.hazardlib.imt import PGA, PGV, SA
+from openquake.hazardlib.imt import PGA, PGV, SA, IA,PGD,IH
 
 
 class GMICE(ABC):
@@ -20,6 +20,9 @@ class GMICE(ABC):
     def __init__(self):
         self._pga = PGA()
         self._pgv = PGV()
+        self._pgd = PGD()
+        self._ia = IA()
+        self._ih = IH()
         self._sa03 = SA(0.3)
         self._sa10 = SA(1.0)
         self._sa30 = SA(3.0)

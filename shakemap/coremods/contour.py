@@ -68,6 +68,30 @@ class ContourModule(CoreModule):
                                            'type': 'application/json'}
                                           ]
                               }
+    contents['iaContour'] = {'title': 'IA Contours',
+                              'caption': 'Contours of [COMPONENT] Arias '
+                                         'intensity (cm/s).',
+                              'page': contour_page,
+                              'formats': [{'filename': 'cont_*IA.json',
+                                           'type': 'application/json'}
+                                          ]
+                              }
+    contents['pgdContour'] = {'title': 'PGD Contours',
+                              'caption': 'Contours of [COMPONENT] peak '
+                                         'ground displacement (cm).',
+                              'page': contour_page,
+                              'formats': [{'filename': 'cont_*PGD.json',
+                                           'type': 'application/json'}
+                                          ]
+                              }
+    contents['ihContour'] = {'title': 'IH Contours',
+                              'caption': 'Contours of [COMPONENT] Housner '
+                                         'intensity (cm).',
+                              'page': contour_page,
+                              'formats': [{'filename': 'cont_*IH.json',
+                                           'type': 'application/json'}
+                                          ]
+                              }
     psacap = 'Contours of [COMPONENT] [FPERIOD] sec 5% damped '\
              'pseudo-spectral acceleration(%g).'
     contents['psa[PERIOD]Contour'] = {
