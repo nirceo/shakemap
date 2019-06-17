@@ -46,14 +46,20 @@
         "PGA": "Peak Ground Acceleration Map",
         "SA(0.3)": "0.3 Second Peak Spectral Acceleration Map",
         "SA(1.0)": "1.0 Second Peak Spectral Acceleration Map",
-        "SA(3.0)": "3.0 Second Peak Spectral Acceleration Map"
+        "SA(3.0)": "3.0 Second Peak Spectral Acceleration Map",
+        "IA": "Arias",
+        "IH": "Housner",
+        "PGD": "Peak Ground Displacement"
     },
     "units": {
          "PGV": "(cm/s)",
          "PGA": "(%g)",
          "SA(0.3)": "(%g)",
          "SA(1.0)": "(%g)",
-         "SA(3.0)": "(%g)"
+         "SA(3.0)": "(%g)",
+         "IA": "(cm/s)",
+         "IH": "(cm)",
+         "PGD": "(cm)"
     },
     "legend": {
         "instrument": "Seismic Instrument",

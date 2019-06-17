@@ -166,6 +166,21 @@ def contour_to_files(container, output_dir, logger, contents,
                              'Contours of ' + component + ' peak '
                              'ground velocity (cm/s).',
                              fname, 'application/json')
+        elif imtype == 'PGD':
+            contents.addFile('pgdContour', 'PGD Contours',
+                             'Contours of ' + component + ' peak '
+                             'ground displacement (cm).',
+                             fname, 'application/json')
+        elif imtype == 'IA':
+            contents.addFile('iaContour', 'IA Contours',
+                             'Contours of ' + component + ' peak '
+                             'arias (cm/s).',
+                             fname, 'application/json')
+        elif imtype == 'IH':
+            contents.addFile('ihContour', 'IH Contours',
+                             'Contours of ' + component + ' peak '
+                             'Housner (cm).',
+                             fname, 'application/json')
         else:
             contents.addFile(imtype + 'Contour',
                              imtype.upper() + ' Contours',
