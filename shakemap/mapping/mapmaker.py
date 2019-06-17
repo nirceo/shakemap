@@ -1149,9 +1149,6 @@ def draw_map(adict, override_scenario=False):
 
     if imtype == 'MMI':
         draped_hsv = _get_draped(pimtdata, ptopo_data, mmimap)
-    elif imtype in ['PGV', 'PGD', 'IA', 'IH']:
-        pimtdata = np.exp(pimtdata)
-        draped_hsv = _get_draped(pimtdata, ptopo_data, mmimap)
     else:
         # get the draped topo data
         topo_colormap = ColorPalette.fromPreset('shaketopo')
