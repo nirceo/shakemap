@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../_static/northridge_points.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -57,21 +57,6 @@
 <code class="descname">dependencies</code><em class="property"> = [('products/shake_result.hdf', True)]</em><a class="headerlink" href="#shakemap.coremods.kml.KMLModule.dependencies" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="shakemap.coremods.kml.KMLModule.kml_page">
-<code class="descname">kml_page</code><em class="property"> = {'slug': 'kml', 'title': 'Ground Motion KMZ File'}</em><a class="headerlink" href="#shakemap.coremods.kml.KMLModule.kml_page" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="shakemap.coremods.kml.KMLModule.contents">
-<code class="descname">contents</code><em class="property"> = {'shakemap_kmz': {'caption': 'ShakeMap Overview.', 'formats': [{'filename': 'shakemap.kmz', 'type': 'application/vnd.google-earth.kml+xml'}], 'page': {'slug': 'kml', 'title': 'Ground Motion KMZ File'}, 'title': 'ShakeMap Overview KMZ'}}</em><a class="headerlink" href="#shakemap.coremods.kml.KMLModule.contents" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="shakemap.coremods.kml.KMLModule.ftype">
-<code class="descname">ftype</code><em class="property"> = 'application/vnd.google-earth.kml+xml'</em><a class="headerlink" href="#shakemap.coremods.kml.KMLModule.ftype" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="shakemap.coremods.kml.KMLModule.execute">
 <code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#KMLModule.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.KMLModule.execute" title="Permalink to this definition">¶</a></dt>
@@ -95,7 +80,7 @@ exist.</li>
 
 <dl class="function">
 <dt id="shakemap.coremods.kml.create_kmz">
-<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_kmz</code><span class="sig-paren">(</span><em>container</em>, <em>datadir</em>, <em>oceanfile</em>, <em>logger</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_kmz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_kmz" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_kmz</code><span class="sig-paren">(</span><em>container</em>, <em>datadir</em>, <em>logger</em>, <em>contents</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_kmz"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_kmz" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
@@ -192,7 +177,7 @@ the viewer’s map.</p>
 
 <dl class="function">
 <dt id="shakemap.coremods.kml.create_overlay">
-<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_overlay</code><span class="sig-paren">(</span><em>container</em>, <em>oceanfile</em>, <em>datadir</em>, <em>document</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_overlay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_overlay" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_overlay</code><span class="sig-paren">(</span><em>container</em>, <em>datadir</em>, <em>document</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_overlay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_overlay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a KML file and intensity map.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -200,7 +185,6 @@ the viewer’s map.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>container</strong> (<em>ShakeMapOutputContainer</em>) – Results of model.conf.</li>
-<li><strong>oceanfile</strong> (<a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to shapefile containing ocean polygons.</li>
 <li><strong>datadir</strong> (<a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to data directory where output KMZ will be written.</li>
 <li><strong>document</strong> (<em>SubElement</em>) – KML document where the overlay tags should go.</li>
 </ul>
@@ -218,7 +202,7 @@ the viewer’s map.</p>
 
 <dl class="function">
 <dt id="shakemap.coremods.kml.create_overlay_image">
-<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_overlay_image</code><span class="sig-paren">(</span><em>container</em>, <em>oceanfile</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_overlay_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_overlay_image" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">shakemap.coremods.kml.</code><code class="descname">create_overlay_image</code><span class="sig-paren">(</span><em>container</em>, <em>filename</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/kml.html#create_overlay_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.kml.create_overlay_image" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a semi-transparent PNG image of intensity.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -226,7 +210,6 @@ the viewer’s map.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>container</strong> (<em>ShakeMapOutputContainer</em>) – Results of model.conf.</li>
-<li><strong>oceanfile</strong> (<a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to shapefile containing ocean polygons.</li>
 <li><strong>filename</strong> (<a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to desired output PNG file.</li>
 </ul>
 </td>
@@ -476,11 +459,11 @@ the viewer’s map.</p>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.associate.html">shakemap.coremods.associate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.augment.html">shakemap.coremods.augment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.base.html">shakemap.coremods.base</a></li>
-<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.cancel.html">shakemap.coremods.cancel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.contour.html">shakemap.coremods.contour</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.dyfi.html">shakemap.coremods.dyfi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.exception.html">shakemap.coremods.exception</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.gridxml.html">shakemap.coremods.gridxml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.history.html">shakemap.coremods.history</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.info.html">shakemap.coremods.info</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">shakemap.coremods.kml</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.mapping.html">shakemap.coremods.mapping</a></li>
@@ -488,10 +471,15 @@ the viewer’s map.</p>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.plotregr.html">shakemap.coremods.plotregr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.raster.html">shakemap.coremods.raster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.rupture.html">shakemap.coremods.rupture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.save.html">shakemap.coremods.save</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.select.html">shakemap.coremods.select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.shape.html">shakemap.coremods.shape</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.sleep.html">shakemap.coremods.sleep</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.stations.html">shakemap.coremods.stations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer.html">shakemap.coremods.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_base.html">shakemap.coremods.transfer_base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_email.html">shakemap.coremods.transfer_email</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_pdl.html">shakemap.coremods.transfer_pdl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_scp.html">shakemap.coremods.transfer_scp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestimage.html">shakemap.coremods.xtestimage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestplot.html">shakemap.coremods.xtestplot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestplot_multi.html">shakemap.coremods.xtestplot_multi</a></li>

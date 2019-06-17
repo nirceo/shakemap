@@ -3,9 +3,13 @@
 import os.path
 from tempfile import mkdtemp
 import shutil
+import copy
 
 from impactutils.io.smcontainers import ShakeMapOutputContainer
-from shakemap.mapping.mapmaker import draw_intensity, draw_contour
+from impactutils.mapping.city import Cities
+from shakemap.mapping.mapmaker import draw_map
+from shakemap.coremods.mapping import get_text_strings
+from shakemap.utils.config import get_data_path
 
 from mapio.gmt import GMTGrid
 from mapio.geodict import GeoDict
@@ -40,14 +44,38 @@ def test_mapmaker_intensity():
                             samplegeodict=sampledict,
                             resample=False)
 
-    oceanfile = os.path.join(homedir, '..', '..', 'data', 'install', 'data',
-                             'mapping', 'northridge_ocean.json')
     outpath = mkdtemp()
 
+    model_config = container.getConfig()
+    comp = container.getComponents('MMI')[0]
+    textfile = os.path.join(get_data_path(), 'mapping',
+                            'map_strings.en')
+    text_dict = get_text_strings(textfile)
+
+    cities = Cities.fromDefault()
+    d = {'imtype': 'MMI',
+         'topogrid': topogrid,
+         'allcities': cities,
+         'states_provinces': None,
+         'countries': None,
+         'oceans': None,
+         'lakes': None,
+         'roads': None,
+         'faults': None,
+         'datadir': outpath,
+         'operator': 'NEIC',
+         'filter_size': 10,
+         'info': info,
+         'component': comp,
+         'imtdict': container.getIMTGrids('MMI', comp),
+         'ruptdict': copy.deepcopy(container.getRuptureDict()),
+         'stationdict': container.getStationDict(),
+         'config': model_config,
+         'tdict': text_dict
+         }
+
     try:
-        pdf, png, legend = draw_intensity(container, topogrid, oceanfile,
-                                          outpath, 'NEIC')
-        print(pdf)
+        fig1, fig2 = draw_map(d)
     except Exception:
         assert 1 == 2
     finally:
@@ -83,14 +111,37 @@ def test_mapmaker_contour():
                             samplegeodict=sampledict,
                             resample=False)
 
-    oceanfile = os.path.join(homedir, '..', '..', 'data', 'install', 'data',
-                             'mapping', 'northridge_ocean.json')
     outpath = mkdtemp()
     filter_size = 10
+    model_config = container.getConfig()
+    comp = container.getComponents('PGA')[0]
+    textfile = os.path.join(get_data_path(), 'mapping',
+                            'map_strings.en')
+    text_dict = get_text_strings(textfile)
+
+    cities = Cities.fromDefault()
+    d = {'imtype': 'PGA',
+         'topogrid': topogrid,
+         'allcities': cities,
+         'states_provinces': None,
+         'countries': None,
+         'oceans': None,
+         'lakes': None,
+         'roads': None,
+         'faults': None,
+         'datadir': outpath,
+         'operator': 'NEIC',
+         'filter_size': filter_size,
+         'info': info,
+         'component': comp,
+         'imtdict': container.getIMTGrids('PGA', comp),
+         'ruptdict': copy.deepcopy(container.getRuptureDict()),
+         'stationdict': container.getStationDict(),
+         'config': model_config,
+         'tdict': text_dict
+         }
     try:
-        pdf, png = draw_contour(container, 'PGA', topogrid, oceanfile,
-                                outpath, 'NEIC', filter_size)
-        print(pdf)
+        _ = draw_map(d)
     except Exception:
         assert 1 == 2
     finally:

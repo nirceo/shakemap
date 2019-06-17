@@ -14,7 +14,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="shortcut icon" href="../_static/northridge_points.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -41,7 +41,6 @@
 <em class="property">class </em><code class="descclassname">shakemap.coremods.mapping.</code><code class="descname">MappingModule</code><span class="sig-paren">(</span><em>eventid</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#MappingModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="shakemap.coremods.base.html#shakemap.coremods.base.CoreModule" title="shakemap.coremods.base.CoreModule"><code class="xref py py-class docutils literal notranslate"><span class="pre">shakemap.coremods.base.CoreModule</span></code></a></p>
 <p>mapping – Generate maps of the IMTs found in shake_result.hdf.</p>
-<p>Instantiate a CoreModule class with an event ID.</p>
 <dl class="attribute">
 <dt id="shakemap.coremods.mapping.MappingModule.command_name">
 <code class="descname">command_name</code><em class="property"> = 'mapping'</em><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.command_name" title="Permalink to this definition">¶</a></dt>
@@ -62,21 +61,6 @@
 <code class="descname">configs</code><em class="property"> = ['products.conf']</em><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.configs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="shakemap.coremods.mapping.MappingModule.mapping_page">
-<code class="descname">mapping_page</code><em class="property"> = {'slug': 'maps', 'title': 'Ground Motion Maps'}</em><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.mapping_page" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="shakemap.coremods.mapping.MappingModule.contents">
-<code class="descname">contents</code><em class="property"> = {'intensityMap': {'caption': 'Map of macroseismic intensity.', 'formats': [{'filename': 'intensity.jpg', 'type': 'image/jpeg'}, {'filename': 'intensity.pdf', 'type': 'application/pdf'}], 'page': {'slug': 'maps', 'title': 'Ground Motion Maps'}, 'title': 'Intensity Map'}, 'intensityThumbnail': {'caption': 'Thumbnail of intensity map.', 'formats': [{'filename': 'pin-thumbnail.png', 'type': 'image/png'}], 'page': {'slug': 'maps', 'title': 'Ground Motion Maps'}, 'title': 'Intensity Thumbnail'}, 'pgaMap': {'caption': 'Map of peak ground acceleration (%g).', 'formats': [{'filename': 'pga.jpg', 'type': 'image/jpeg'}, {'filename': 'pga.pdf', 'type': 'image/jpeg'}], 'page': {'slug': 'maps', 'title': 'Ground Motion Maps'}, 'title': 'PGA Map'}, 'pgvMap': {'caption': 'Map of peak ground velocity (cm/s).', 'formats': [{'filename': 'pgv.jpg', 'type': 'image/jpeg'}, {'filename': 'pgv.pdf', 'type': 'application/pdf'}], 'page': {'slug': 'maps', 'title': 'Ground Motion Maps'}, 'title': 'PGV Map'}, 'psa[PERIOD]Map': {'caption': 'Map of [FPERIOD] sec 5% damped pseudo-spectral acceleration(%g).', 'formats': [{'filename': 'psa[0-9]p[0-9].jpg', 'type': 'image/jpeg'}, {'filename': 'psa[0-9]p[0-9].pdf', 'type': 'application/pdf'}], 'page': {'slug': 'maps', 'title': 'Ground Motion Maps'}, 'title': 'PSA[PERIOD] Map'}}</em><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.contents" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="shakemap.coremods.mapping.MappingModule.psacap">
-<code class="descname">psacap</code><em class="property"> = 'Map of [FPERIOD] sec 5% damped pseudo-spectral acceleration(%g).'</em><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.psacap" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="shakemap.coremods.mapping.MappingModule.execute">
 <code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#MappingModule.execute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.execute" title="Permalink to this definition">¶</a></dt>
@@ -95,12 +79,37 @@ exist.</li>
 </table>
 </dd></dl>
 
-<dl class="method">
-<dt id="shakemap.coremods.mapping.MappingModule.make_pin_thumbnail">
-<code class="descname">make_pin_thumbnail</code><span class="sig-paren">(</span><em>container</em>, <em>component</em>, <em>datadir</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#MappingModule.make_pin_thumbnail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.MappingModule.make_pin_thumbnail" title="Permalink to this definition">¶</a></dt>
+</dd></dl>
+
+<dl class="function">
+<dt id="shakemap.coremods.mapping.make_map">
+<code class="descclassname">shakemap.coremods.mapping.</code><code class="descname">make_map</code><span class="sig-paren">(</span><em>adict</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#make_map"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.make_map" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="shakemap.coremods.mapping.make_pin_thumbnail">
+<code class="descclassname">shakemap.coremods.mapping.</code><code class="descname">make_pin_thumbnail</code><span class="sig-paren">(</span><em>adict</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#make_pin_thumbnail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.make_pin_thumbnail" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make the artsy-thumbnail for the pin on the USGS webpages.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="shakemap.coremods.mapping.get_text_strings">
+<code class="descclassname">shakemap.coremods.mapping.</code><code class="descname">get_text_strings</code><span class="sig-paren">(</span><em>stringfile</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/shakemap/coremods/mapping.html#get_text_strings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#shakemap.coremods.mapping.get_text_strings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the file containing the translated text strings, remove the
+comments and parse as JSON.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>stringfile</strong> (<a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) – Path to the map_strings.xx file specified in the
+config. The file is assumend to be UTF-8.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A dictionary of strings for use in writing text to the maps.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/3.5/library/stdtypes.html#dict" title="(in Python v3.6)">dict</a></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 </div>
@@ -139,11 +148,11 @@ exist.</li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.associate.html">shakemap.coremods.associate</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.augment.html">shakemap.coremods.augment</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.base.html">shakemap.coremods.base</a></li>
-<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.cancel.html">shakemap.coremods.cancel</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.contour.html">shakemap.coremods.contour</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.dyfi.html">shakemap.coremods.dyfi</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.exception.html">shakemap.coremods.exception</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.gridxml.html">shakemap.coremods.gridxml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.history.html">shakemap.coremods.history</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.info.html">shakemap.coremods.info</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.kml.html">shakemap.coremods.kml</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">shakemap.coremods.mapping</a></li>
@@ -151,10 +160,15 @@ exist.</li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.plotregr.html">shakemap.coremods.plotregr</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.raster.html">shakemap.coremods.raster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.rupture.html">shakemap.coremods.rupture</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.save.html">shakemap.coremods.save</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.select.html">shakemap.coremods.select</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.shape.html">shakemap.coremods.shape</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.sleep.html">shakemap.coremods.sleep</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.stations.html">shakemap.coremods.stations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer.html">shakemap.coremods.transfer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_base.html">shakemap.coremods.transfer_base</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_email.html">shakemap.coremods.transfer_email</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_pdl.html">shakemap.coremods.transfer_pdl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.transfer_scp.html">shakemap.coremods.transfer_scp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestimage.html">shakemap.coremods.xtestimage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestplot.html">shakemap.coremods.xtestplot</a></li>
 <li class="toctree-l4"><a class="reference internal" href="shakemap.coremods.xtestplot_multi.html">shakemap.coremods.xtestplot_multi</a></li>

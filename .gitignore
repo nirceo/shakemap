@@ -9,10 +9,13 @@ build
 shakemap.egg-info/
 **/shake_data.hdf
 **/.gmtcommands4
+**/gmt.history
 **/.ropeproject
 htmlcov
 tests/data/eventdata/*/current/products
+tests/data/eventdata/*/current/.saved
 tests/data/eventdata/*/current/pdl
+tests/data/eventdata/*/backup*
 tests/data/install/logs
 tests/data/install/data/amps.db
 tests/data/install/data/amps.db-shm
