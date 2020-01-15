@@ -44,9 +44,12 @@ def contour(container, imtype, component, filter_size, gmice):
     if imtype == 'MMI':
         sgrid = grid
         units = 'mmi'
-    elif imtype == 'PGV':
+    elif imtype in ['PGV', 'IA']:
         sgrid = np.exp(grid)
         units = 'cms'
+    elif imtype in ['PGD', 'IH']:
+        sgrid = np.exp(grid)
+        units = 'cm'
     else:
         sgrid = np.exp(grid) * 100.0
         units = 'pctg'
